@@ -1,13 +1,15 @@
 @startuml example
 
-entity "User" {
+entity "User"
+{
   *id : int
   --
   username : string
   email : string
 }
 
-entity "Post" {
+entity "Post"
+{
   *id : int
   --
   title : string
@@ -15,7 +17,8 @@ entity "Post" {
   user_id : int
 }
 
-entity "Comment" {
+entity "Comment"
+{
   *id : int
   --
   post_id : int
