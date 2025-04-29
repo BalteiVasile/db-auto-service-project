@@ -1,0 +1,42 @@
+@startuml auto_service
+
+entity "Jobs"
+{
+  *id: number
+  --
+  job_name: varchar(255)?
+}
+
+entity "User"
+{
+  *id: number
+  --
+  +mail: varchar?
+  #last_name: varchar2?
+  #first_name: varchar2?
+  phone_number: varchar2?
+  gender: varchar2
+  birth_date: date
+  #job_id: number
+  #department_id: number
+  #hiring_date: date
+  --
+  --
+  CONSTRAINT mail
+  CONSTRAINT gender
+}
+
+entity "employee_addresses"
+{
+  +id: number
+  --
+  #id_employee: number
+  #county: varchar2?
+  #city: varchar2?
+  #street: varchar2?
+  #number: number
+}
+
+User -- Jobs: "Foreign Key"
+
+@enduml
