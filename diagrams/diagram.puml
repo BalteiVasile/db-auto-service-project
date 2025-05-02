@@ -1,42 +1,82 @@
 @startuml auto_service
 
-entity "Jobs"
-{
-  *id: number
-  --
-  job_name: varchar(255)?
-}
-
-entity "User"
+entity Employees
 {
   *id: number
   --
   +mail: varchar?
   #last_name: varchar2?
   #first_name: varchar2?
-  phone_number: varchar2?
+  #phone_number: varchar2?
   gender: varchar2
   birth_date: date
   #job_id: number
   #department_id: number
+  #adress_id: number
   #hiring_date: date
   --
   --
   CONSTRAINT mail
   CONSTRAINT gender
+  CONSTRAINT phone_number
 }
 
-entity "employee_addresses"
+entity Jobs
+{
+  *id: number
+  --
+  job_name: varchar(255)?
+}
+
+entity Departments
+{
+  *id: number
+  --
+  #department_name: varchar2 
+}
+
+entity Tasks
+{
+  *id: number
+  --
+  #title: varchar2
+  description: varchar2
+  department_id: number
+  employee_id: number
+  #progress: varchar2?
+  #created_at: date
+  started_at: date
+  finished_at: date
+  --
+  --
+  CONSTRAINT progress
+  TBD: Update constraint only made by manager role
+}
+
+entity Employee_timesheets
+{
+  *id: number
+  --
+  #employee_id: number
+  #clock_in: date
+  clock_out: date
+  #date: date
+  task_id: number
+  time: date (only if grant to update is enabled)
+}
+
+entity Employee_addresses
 {
   +id: number
   --
-  #id_employee: number
   #county: varchar2?
   #city: varchar2?
   #street: varchar2?
   #number: number
 }
 
-User -- Jobs: "Foreign Key"
+Employees -- Jobs: "Foreign Key"
+Employees -- Employee_addresses: "Foreign Key"
+Employees -- Departments: "Foreign Key"
 
 @enduml
