@@ -4,11 +4,11 @@ entity Employees
 {
   *id: number
   --
-  +mail: varchar?
-  #last_name: varchar2?
-  #first_name: varchar2?
-  #phone_number: varchar2?
-  gender: varchar2
+  +mail: varchar
+  #last_name: varchar2
+  #first_name: varchar2
+  #phone_number: varchar2
+  gender: varchar2?
   birth_date: date
   #job_id: number
   #department_id: number
@@ -25,7 +25,7 @@ entity Jobs
 {
   *id: number
   --
-  job_name: varchar(255)?
+  job_name: varchar2
 }
 
 entity Departments
@@ -50,7 +50,6 @@ entity Tasks
   --
   --
   CONSTRAINT progress
-  TBD: Update constraint only made by manager role
 }
 
 entity Employee_timesheets
@@ -62,21 +61,31 @@ entity Employee_timesheets
   clock_out: date
   #date: date
   task_id: number
-  time: date (only if grant to update is enabled)
+  time: date (only if grant for update triggers are enabled)
 }
 
 entity Employee_addresses
 {
   +id: number
   --
-  #county: varchar2?
-  #city: varchar2?
-  #street: varchar2?
+  #county: varchar2
+  #city: varchar2
+  #street: varchar2
   #number: number
 }
 
-Employees -- Jobs: "Foreign Key"
-Employees -- Employee_addresses: "Foreign Key"
-Employees -- Departments: "Foreign Key"
+Employees -- Jobs: "fk (job id)"
+Employees -- Employee_addresses: "fk (address id)"
+Employees -- Departments: "fk (department id)"
+Employees -- Employee_timesheets: "fk (employee id)"
+Employees -- Tasks: "fk (employee id)"
+Tasks -- Departments: "fk (department id)"
+Tasks -- Employee_timesheets: "fk (task id)"
+
+legend
+  E    ➡️ Entity
+
+  fk ➡️ foreign key
+endlegend
 
 @enduml
