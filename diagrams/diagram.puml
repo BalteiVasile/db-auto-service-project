@@ -74,16 +74,16 @@ entity Employee_addresses
   #number: number
 }
 
-Employees -- Jobs: "fk (job id)"
-Employees -- Employee_addresses: "fk (address id)"
-Employees -- Departments: "fk (department id)"
-Employees -- Employee_timesheets: "fk (employee id)"
-Employees -- Tasks: "fk (employee id)"
-Tasks -- Departments: "fk (department id)"
-Tasks -- Employee_timesheets: "fk (task id)"
+Employees }o--|| Jobs: "fk (job id)"
+Employees }o--|| Employee_addresses: "fk (address id)"
+Employees }o--|| Departments: "fk (department id)"
+Employees ||--o{ Employee_timesheets: "fk (employee id)"
+Employees ||--o{ Tasks: "fk (employee id)"
+Tasks }o--o{ Departments: "fk (department id)"
+Tasks }o--|| Employee_timesheets: "fk (task id)"
 
 legend
-  E    ➡️ Entity
+  E    ➡️ Entity (table)asd
 
   fk ➡️ foreign key
 endlegend
