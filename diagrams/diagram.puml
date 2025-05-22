@@ -43,7 +43,7 @@ entity Tasks
   description: varchar2
   department_id: number
   employee_id: number
-  #progress: varchar2?
+  #progress: index
   #created_at: date
   started_at: date
   finished_at: date
