@@ -83,7 +83,7 @@ Tasks }o--o{ Departments: "fk (department id)"
 Tasks }o--|| Employee_timesheets: "fk (task id)"
 
 legend
-  E    ➡️ Entity (table)asd
+  E    ➡️ Entity (table)
 
   fk ➡️ foreign key
 endlegend
