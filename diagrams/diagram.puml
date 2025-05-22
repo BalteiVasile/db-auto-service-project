@@ -1,0 +1,91 @@
+@startuml auto_service
+
+entity Employees
+{
+  *id: number
+  --
+  +mail: varchar
+  #last_name: varchar2
+  #first_name: varchar2
+  #phone_number: varchar2
+  gender: varchar2?
+  birth_date: date
+  #job_id: number
+  #department_id: number
+  #adress_id: number
+  #hiring_date: date
+  --
+  --
+  CONSTRAINT mail
+  CONSTRAINT gender
+  CONSTRAINT phone_number
+}
+
+entity Jobs
+{
+  *id: number
+  --
+  job_name: varchar2
+}
+
+entity Departments
+{
+  *id: number
+  --
+  #department_name: varchar2 
+}
+
+entity Tasks
+{
+  *id: number
+  --
+  #title: varchar2
+  description: varchar2
+  department_id: number
+  employee_id: number
+  #progress: varchar2?
+  #created_at: date
+  started_at: date
+  finished_at: date
+  --
+  --
+  CONSTRAINT progress
+}
+
+entity Employee_timesheets
+{
+  *id: number
+  --
+  #employee_id: number
+  #clock_in: date
+  clock_out: date
+  #date: date
+  task_id: number
+  time: date (only if grant for update triggers are enabled)
+}
+
+entity Employee_addresses
+{
+  +id: number
+  --
+  #county: varchar2
+  #city: varchar2
+  #street: varchar2
+  #number: number
+}
+
+Employees }o--|| Jobs: "fk (job id)"
+Employees }o--|| Employee_addresses: "fk (address id)"
+Employees }o--|| Departments: "fk (department id)"
+Employees ||--o{ Employee_timesheets: "fk (employee id)"
+Employees ||--o{ Tasks: "fk (employee id)"
+Tasks }o--o{ Departments: "fk (department id)"
+Tasks }o--|| Employee_timesheets: "fk (task id)"
+
+legend
+  E    ➡️ Entity (table)asd
+
+  fk ➡️ foreign key
+endlegend
+
+@enduml
