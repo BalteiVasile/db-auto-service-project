@@ -1,91 +1,92 @@
-@startuml auto_service
+@startuml service_auto
 
-entity Employees
+entity Angajati
 {
   *id: number
   --
   +mail: varchar
-  #last_name: varchar2
-  #first_name: varchar2
-  #phone_number: varchar2
-  gender: varchar2?
-  birth_date: date
+  #nume: varchar2
+  #prenume: varchar2
+  #numar_telefon: varchar2
+  gender: ??
+  zi_de_nastere: date
   #job_id: number
-  #department_id: number
-  #adress_id: number
-  #hiring_date: date
+  #id_departament: number
+  #id_adresa: number
+  #data_angajarii: date
   --
   --
   CONSTRAINT mail
   CONSTRAINT gender
-  CONSTRAINT phone_number
+  CONSTRAINT numar_telefon
 }
 
-entity Jobs
+entity Joburi
 {
   *id: number
   --
-  job_name: varchar2
+  nume_job: varchar2
 }
 
-entity Departments
+entity Departamente
 {
   *id: number
   --
-  #department_name: varchar2 
+  #nume_departament: varchar2 
 }
 
-entity Tasks
+entity Sarcini
 {
   *id: number
   --
-  #title: varchar2
-  description: varchar2
-  department_id: number
-  employee_id: number
-  #progress: index
-  #created_at: date
-  started_at: date
-  finished_at: date
+  #titlu: varchar2
+  descriere: varchar2
+  id_departament: number
+  id_angajat: number
+  #progres: index
+  #creat_la: date
+  inceput_la: date
+  sfarsit_la: date
   --
   --
-  CONSTRAINT progress
+  CONSTRAINT progres
 }
 
-entity Employee_timesheets
+entity Pontaj_Angajati
 {
   *id: number
   --
-  #employee_id: number
+  #id_angajat: number
   #clock_in: date
   clock_out: date
-  #date: date
-  task_id: number
-  time: date (only if grant for update triggers are enabled)
+  id_sarcina: number
+  timp: date/timestamp
 }
 
-entity Employee_addresses
+entity Adrese_Angajati
 {
   +id: number
   --
-  #county: varchar2
-  #city: varchar2
-  #street: varchar2
-  #number: number
+  #judet: varchar2
+  #oras: varchar2
+  #strada: varchar2
+  #numar: number
+  bloc: number
+  scara: varchar2
 }
 
-Employees }o--|| Jobs: "fk (job id)"
-Employees }o--|| Employee_addresses: "fk (address id)"
-Employees }o--|| Departments: "fk (department id)"
-Employees ||--o{ Employee_timesheets: "fk (employee id)"
-Employees ||--o{ Tasks: "fk (employee id)"
-Tasks }o--o{ Departments: "fk (department id)"
-Tasks }o--|| Employee_timesheets: "fk (task id)"
+Angajati }o--|| Joburi: "fk (job id)"
+Angajati }o--|| Adrese_Angajati: "fk (address id)"
+Angajati }o--|| Departamente: "fk (department id)"
+Angajati ||--o{ Pontaj_Angajati: "fk (employee id)"
+Angajati ||--o{ Sarcini: "fk (employee id)"
+Sarcini  }o--o{ Departamente: "fk (department id)"
+Sarcini  }o--|| Pontaj_Angajati: "fk (task id)"
 
 legend
-  E    ➡️ Entity (table)
+  E    ➡️ Entitate (tabel)
 
-  fk ➡️ foreign key
+  fk ➡️ foreign key (cheie externa)
 endlegend
 
 @enduml

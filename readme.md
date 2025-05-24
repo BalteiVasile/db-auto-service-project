@@ -1,25 +1,25 @@
 
-# DB auto service SQL
+# Baze de date proiect: service auto
 
 ...
 
 ---
 
-#### Q: What can be done with this database model?
-#### R: Let's count some examples where it can help.
+#### Q: La ce poate ajuta baza de date propusa?
+#### R: Sa numaram niste exemple:
 
-1. List all employees which are working in a specific department.
-2. Select timesheets for a specific employee in a specific month.
-3. List the tasks which a employee works at the moment.
-4. List tasks which are finished by a employee.
-5. List total salaries which needs to be paid for a department.
-6. Possibility to list in a need full information about a employee, including gender, birthdate and address.
-7. How many employees are? which have the same job (e. g. manager).
-8. List the tasks which started from a while and are not finished yet.
-9. List the tasks which are created from a while but are not assigned to anyone or the progress isn't started.
-10. List how many hours each employee has over or under based on the standard working hours in a specific month.
-11. How many employees are from a specific city.
-12. List how many tasks are in each department.
-13. List how many tasks are for a specific job.
-14. List the number of tasks which are in progress for each employee in a descending order.
-15. List the tasks which are rejected as resolution by the employees.
+1. Afiseaza angajatii care muncesc intr-un anumit departament.
+2. Afiseaza pontajele pentru un anumit angajat intr-o luna data.
+3. Selecteaza taskurile la care angajatii muncesc in acest moment. (Conform tabelului de Sarcini)
+4. Afiseaza sarcinile care au fost rezolvate de catre un anume angajat.
+5. Selecteaza totalul de salarii ce trebuie de platit pentru un departament dat.
+6. Afisarea tuturor angajatilor inclusiv data nasterii, adresa si sexul.
+7. Cati angajati sunt care au acelasi job? (Exemplu: manager)
+8. Afiseaza sarcinile care au fost incepute de un timp dar inca nu au fost terminate.
+9. Selecteaza sarcinile care au fost create de un timp dar nu au fost atribuite nici unui angajat iar progresul nu este inceput.
+10. Afiseaza cate ore are fiecare angajat in plus sau in minus fata de orele de baza pentru o luna data.
+11. Cati angajati sunt dintr-un oras dat.
+12. Afiseaza cate sarcini sunt atribuite pentru fiecare departament.
+13. Selecteaza cate sarcini sunt pentru un job anume. (Exemplu: tehnician)
+14. Afiseaza numarul de sarcini per angajat care sunt in progres in ordine descrescatoare.
+15. Selecteaza sarcinile care au fost respinse ca rezolutie (rezolutia ticketului) de catre angajati.
