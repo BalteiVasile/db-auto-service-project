@@ -32,7 +32,7 @@ entity Departamente
 {
   *id: number
   --
-  #nume_departament: varchar2 
+  #nume_departament: varchar2
 }
 
 entity Sarcini
@@ -61,6 +61,9 @@ entity Pontaj_Angajati
   clock_out: date
   id_sarcina: number
   timp: date/timestamp
+  --
+  --
+  CONSTRAINT clock_out_valid CHECK (clock_out IS NULL or clock_out > clock_in)
 }
 
 entity Adrese_Angajati
@@ -75,16 +78,33 @@ entity Adrese_Angajati
   scara: varchar2
 }
 
-Angajati }o--|| Joburi: "fk (job id)"
-Angajati }o--|| Adrese_Angajati: "fk (address id)"
-Angajati }o--|| Departamente: "fk (department id)"
-Angajati ||--o{ Pontaj_Angajati: "fk (employee id)"
-Angajati ||--o{ Sarcini: "fk (employee id)"
-Sarcini  }o--o{ Departamente: "fk (department id)"
-Sarcini  }o--|| Pontaj_Angajati: "fk (task id)"
+entity Istoric_Angajati
+{
+  +id: number
+  --
+  #id_angajat: number
+  #id_departament: number
+  #id_job: number
+  #data_start: date
+  data_sfarsit: date
+  --
+  --
+  CONSTRAINT data_sfarsit_valid CHECK (data_sfarsit IS NULL or data_sfarsit > data_start)
+}
+
+Angajati }o--|| Joburi: "fk (id job)"
+Angajati }o--|| Adrese_Angajati: "fk (id adresa)"
+Angajati }o--|| Departamente: "fk (id departament)"
+Angajati ||--o{ Pontaj_Angajati: "fk (id angajat)"
+Angajati ||--o{ Sarcini: "fk (id angajat)"
+Sarcini  }o--o{ Departamente: "fk (id departament)"
+Sarcini  }o--|| Pontaj_Angajati: "fk (id sarcina)"
+Istoric_Angajati --o{ Joburi: "fk (id job)"
+Istoric_Angajati --o{ Departamente: "fk (id departament)"
+Istoric_Angajati }o--o{ Angajati: "fk (id angajat)"
 
 legend
-  E    ➡️ Entitate (tabel)
+  E ➡️ Entitate (tabel)
 
   fk ➡️ foreign key (cheie externa)
 endlegend
