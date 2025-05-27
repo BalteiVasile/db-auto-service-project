@@ -50,6 +50,7 @@ entity Sarcini
   --
   --
   CONSTRAINT progres
+  CONSTRAINT sfarsit_la
 }
 
 entity Pontaj_Angajati
