@@ -1,5 +1,6 @@
 
 -- TODO: istoric sarcini?
+-- TODO: Salarii?
 
 CREATE TABLE Joburi
 (
@@ -55,7 +56,7 @@ CREATE TABLE Angajati
 
   -- CONSTRAINTS
   CONSTRAINT mail_ck CHECK(mail LIKE '%@%.%' AND INSTR(mail, ' ')=0),
-  CONSTRAINT numar_telefon_ck CHECK(numar_telefon LIKE '07%' AND LENGTH(numar_telefon)=10),
+  CONSTRAINT numar_telefon_ck CHECK(numar_telefon BETWEEN '0700000000' AND '0799999999' AND LENGTH(numar_telefon)=10),
   CONSTRAINT sex_ck CHECK(sex IN('M', 'F'))
 )
 
@@ -89,6 +90,7 @@ CREATE TABLE Sarcini
   creat_la DATE NOT NULL,
   inceput_la DATE NOT NULL,
   sfarsit_la DATE NOT NULL,
+  info_progres TEXT,
 
   -- KEYS
   PRIMARY KEY(id),
@@ -97,6 +99,9 @@ CREATE TABLE Sarcini
 
   -- CONSTRAINTS
   CONSTRAINT progres_ck CHECK(progres IN ('NOU', 'IN PROGRES', 'FINALIZAT', 'RESPINS')),
+  CONSTRAINT inceput_la_ck CHECK(inceput_la IS NULL OR id_angajat IS NOT NULL),
+  CONSTRAINT sfarsit_la_ck CHECK(inceput_la IS NULL OR (inceput_la IS NOT NULL AND sfarsit_la IS NOT NULL AND sfarsit_la > inceput_la)),
+  CONSTRAINT info_progres_ck CHECK(info_progres IS NULL OR id_angajat IS NOT NULL)
 )
 
 CREATE TABLE Pontaj_Angajati
@@ -115,3 +120,9 @@ CREATE TABLE Pontaj_Angajati
   -- CONSTRAINTS
   CONSTRAINT clock_out_ck CHECK(clock_out IS NULL OR clock_out > clock_in)
 )
+
+CREATE SEQUENCE id_gen
+  START WITH 1
+  INCREMENT BY 1
+  NOCACHE,
+  NOCYCLE;
