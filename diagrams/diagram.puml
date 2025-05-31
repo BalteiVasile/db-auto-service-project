@@ -90,10 +90,10 @@ entity Istoric_Angajati
   #id_departament: number
   #id_job: number
   #data_start: date
-  data_sfarsit: date
+  #data_sfarsit: date
   --
   --
-  CONSTRAINT data_sfarsit_valid CHECK (data_sfarsit IS NULL or data_sfarsit > data_start)
+  CONSTRAINT data_sfarsit_valid CHECK (data_sfarsit > data_start)
 }
 
 Angajati }o--|| Joburi: "fk (id job)"
