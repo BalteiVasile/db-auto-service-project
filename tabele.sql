@@ -47,10 +47,10 @@ CREATE TABLE Adrese_Angajati_BV
 CREATE TABLE Angajati_BV
 (
   id NUMBER NOT NULL,
-  mail VARCHAR2(50) NOT NULL,
+  mail VARCHAR2(50) UNIQUE NOT NULL,
   nume VARCHAR2(50) NOT NULL,
   prenume VARCHAR2(50) NOT NULL,
-  numar_telefon VARCHAR(10) NOT NULL,
+  numar_telefon VARCHAR(10) UNIQUE NOT NULL,
   sex VARCHAR2(1),
   zi_de_nastere DATE,
   id_job NUMBER NOT NULL,
@@ -98,8 +98,8 @@ CREATE TABLE Sarcini_BV
   id_angajat NUMBER,
   progres VARCHAR2(10) NOT NULL,
   creat_la DATE NOT NULL,
-  inceput_la DATE NOT NULL,
-  sfarsit_la DATE NOT NULL,
+  inceput_la DATE,
+  sfarsit_la DATE,
   info_progres VARCHAR2(255),
 
   -- KEYS
@@ -110,7 +110,7 @@ CREATE TABLE Sarcini_BV
   -- CONSTRAINTS
   CONSTRAINT progres_ck_BV CHECK(progres IN ('NOU', 'IN PROGRES', 'FINALIZAT', 'RESPINS')),
   CONSTRAINT inceput_la_ck_BV CHECK(inceput_la IS NULL OR id_angajat IS NOT NULL),
-  CONSTRAINT sfarsit_la_ck_BV CHECK(inceput_la IS NULL OR (inceput_la IS NOT NULL AND sfarsit_la IS NOT NULL AND sfarsit_la > inceput_la)),
+  CONSTRAINT sfarsit_la_ck_BV CHECK(sfarsit_la IS NULL OR (inceput_la IS NOT NULL AND sfarsit_la IS NOT NULL AND sfarsit_la >= inceput_la)),
   CONSTRAINT info_progres_ck_BV CHECK(info_progres IS NULL OR id_angajat IS NOT NULL)
 );
 

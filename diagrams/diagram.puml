@@ -40,14 +40,14 @@ entity Sarcini
   *id: number
   --
   #titlu: varchar2
-  descriere: TEXT
+  descriere: varchar2
   id_departament: number
   id_angajat: number
   #progres: index
   #creat_la: date
   inceput_la: date
   sfarsit_la: date
-  info_progres: TEXT
+  info_progres: varchar2
   --
   --
   CONSTRAINT progres
