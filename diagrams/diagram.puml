@@ -64,7 +64,6 @@ entity Pontaj_Angajati
   #clock_in: date
   clock_out: date
   id_sarcina: number
-  timp: date/timestamp
   --
   --
   CONSTRAINT clock_out_valid CHECK (clock_out IS NULL or clock_out > clock_in)

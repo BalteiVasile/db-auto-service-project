@@ -121,7 +121,7 @@ CREATE TABLE Pontaj_Angajati_BV
   clock_in DATE NOT NULL,
   clock_out DATE,
   id_sarcina NUMBER,
-  timp TIMESTAMP,
+  -- timp TIMESTAMP,
 
   -- KEYS
   PRIMARY KEY(id),
