@@ -71,5 +71,7 @@ SET id_departament=2
 WHERE id_angajat=(SELECT ID FROM angajati_bv WHERE nume='Ionescu' AND prenume='Maria');
 
 -- 16. Angajatul Alex Bratianu si-a incheiat ziua de munca mai devreme decat figureaza in sistem, corecteaza!
--- ! UPDATE Pontaj_Angajati_BV
--- ! SET clock_out=TO_DATE('10-05-2025 ')
+UPDATE Pontaj_Angajati_BV
+SET clock_out=TO_DATE('2025-05-10 15:00:00', 'YYYY-MM-DD HH24:MI:SS')
+WHERE id_angajat=(SELECT id from angajati_bv WHERE prenume='Alex' AND nume='Bratianu') AND EXTRACT(DAY FROM CLOCK_OUT)=10 AND EXTRACT(MONTH FROM CLOCK_OUT)=5 AND EXTRACT(YEAR FROM CLOCK_OUT)=2025;
+-- SELECT TO_CHAR(clock_out, 'YYYY-MM-DD HH24:MI:SS') as CLOCK_OUT FROM pontaj_angajati_bv WHERE id_angajat=43;

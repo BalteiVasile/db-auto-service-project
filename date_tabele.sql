@@ -103,7 +103,6 @@ INSERT INTO Sarcini_BV (id, titlu, descriere, id_departament, id_angajat, progre
 
 
 -- Pontaj_Angajati    | IDs: 81-90
--- ! Why the clock_in and clock_out do not store the time as well??!!
 INSERT INTO Pontaj_Angajati_BV (id, id_angajat, clock_in, clock_out, id_sarcina) VALUES (id_gen_BV.NEXTVAL, 60, TO_DATE('2025-05-01 08:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2025-05-01 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), 71);
 INSERT INTO Pontaj_Angajati_BV (id, id_angajat, clock_in, clock_out, id_sarcina) VALUES (id_gen_BV.NEXTVAL, 59, TO_DATE('2025-05-02 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2025-05-02 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), 72);
 INSERT INTO Pontaj_Angajati_BV (id, id_angajat, clock_in, clock_out, id_sarcina) VALUES (id_gen_BV.NEXTVAL, 54, TO_DATE('2025-05-03 07:30:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2025-05-03 15:30:00', 'YYYY-MM-DD HH24:MI:SS'), 73);
